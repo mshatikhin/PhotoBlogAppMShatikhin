@@ -42,7 +42,7 @@ var PhotoBlogApp;
             };
         }
         return PhotoVm;
-    })();
+    }());
     PhotoBlogApp.PhotoVm = PhotoVm;
 })(PhotoBlogApp || (PhotoBlogApp = {}));
 //# sourceMappingURL=photo.js.map

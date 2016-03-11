@@ -29,7 +29,7 @@ var PhotoBlogApp;
                 };
             }
             return DataLoader;
-        })();
+        }());
         Api.DataLoader = DataLoader;
         var AsyncClient = (function () {
             function AsyncClient() {
@@ -60,7 +60,7 @@ var PhotoBlogApp;
             };
             AsyncClient.Current = new AsyncClient();
             return AsyncClient;
-        })();
+        }());
         Api.AsyncClient = AsyncClient;
     })(Api = PhotoBlogApp.Api || (PhotoBlogApp.Api = {}));
 })(PhotoBlogApp || (PhotoBlogApp = {}));

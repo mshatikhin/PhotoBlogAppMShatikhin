@@ -23,7 +23,7 @@ var PhotoBlogApp;
             }
         };
         return Util;
-    })();
+    }());
     PhotoBlogApp.Util = Util;
 })(PhotoBlogApp || (PhotoBlogApp = {}));
 //# sourceMappingURL=util.js.map

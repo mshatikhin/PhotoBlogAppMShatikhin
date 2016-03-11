@@ -19,14 +19,14 @@ var PhotoBlogApp;
             });
         }
         return ValueVm;
-    })();
+    }());
     PhotoBlogApp.ValueVm = ValueVm;
     var AlbumVm = (function () {
         function AlbumVm(album) {
             this.album = album;
         }
         return AlbumVm;
-    })();
+    }());
     PhotoBlogApp.AlbumVm = AlbumVm;
     var PostVm = (function () {
         function PostVm(post) {
@@ -37,7 +37,7 @@ var PhotoBlogApp;
             this.shareUrl = "";
         }
         return PostVm;
-    })();
+    }());
     PhotoBlogApp.PostVm = PostVm;
     var MainPagePhotoVm = (function () {
         function MainPagePhotoVm(url, fullUrl) {
@@ -45,7 +45,7 @@ var PhotoBlogApp;
             this.fullUrl = fullUrl;
         }
         return MainPagePhotoVm;
-    })();
+    }());
     PhotoBlogApp.MainPagePhotoVm = MainPagePhotoVm;
     var MainPhotosVm = (function () {
         function MainPhotosVm() {
@@ -71,7 +71,7 @@ var PhotoBlogApp;
             this.shuffle();
         }
         return MainPhotosVm;
-    })();
+    }());
     PhotoBlogApp.MainPhotosVm = MainPhotosVm;
     var MainVm = (function () {
         function MainVm(targetElem, hash) {
@@ -106,7 +106,7 @@ var PhotoBlogApp;
             });
         }
         return MainVm;
-    })();
+    }());
     PhotoBlogApp.MainVm = MainVm;
 })(PhotoBlogApp || (PhotoBlogApp = {}));
 //# sourceMappingURL=mainVm.js.map
