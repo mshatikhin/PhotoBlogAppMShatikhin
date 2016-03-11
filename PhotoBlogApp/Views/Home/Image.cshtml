@@ -1,0 +1,60 @@
+﻿@using System.Web.Optimization
+@using PhotoBlogApp.Models.ClientModels
+@model PhotoBlogApp.Models.ClientModels.AlbumM
+@{
+    var url = "";
+    if (Request.Url != null)
+    {
+        url = Request.Url.GetLeftPart(UriPartial.Authority);
+    }
+}
+<div class="container w100p">
+    <div class="image-box">
+        @if (Model != null)
+        {
+            <div class="image-box__img">
+                <div class="fotorama"
+                     data-ratio="16/9"
+                     data-width="100%"
+                     data-max-width="100%"
+                     data-height="90%"
+                     data-fit="contain"
+                     data-loop="true"
+                     data-shuffle="false"
+                     data-keyboard="true"
+                     data-autoplay="false"
+                     data-hash="true"
+                     data-click="true"
+                     data-swipe="true"
+                     data-allowfullscreen="native"
+                     data-nav="thumbs">
+                    @foreach (var photo in Model.Photos)
+                    {
+                        <img class="image-box__image" id="@photo.Title" src="@string.Format("{0}{1}",url, @photo.FullUrl)" />         
+                    }
+                </div>
+                <div>
+                    <br />
+                    <div class="social-b">
+                        @Html.Partial("Social", new SocialM { })
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/main")
+    <script>
+        var activeIndex = parseInt(@ViewBag.ActiveIndex);
+        $(function () {
+            var $fotoramaDiv = $('.fotorama').fotorama();
+            var fotorama = $fotoramaDiv.data('fotorama');
+            fotorama.show({
+                index: activeIndex
+            });
+        });
+    </script>
+}

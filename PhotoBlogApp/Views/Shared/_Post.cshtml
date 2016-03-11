@@ -1,0 +1,17 @@
+﻿@using PhotoBlogApp.Models.ClientModels
+@model PhotoBlogApp.Models.ClientModels.PostM
+@{
+    Layout = null;
+}
+@if (User.Identity.IsAuthenticated && User.Identity.Name == "admin")
+{
+    <span class="text-info pull-right pointer">
+        <a href="@Url.Action("Edit","Blog",new { id=@Model.PostId })">ред.</a>
+    </span>
+}
+<h1 class="post__title">@Model.Title</h1>
+<div class="text-muted">Автор текста: @Model.Author</div>
+<div class="post__content">
+    @Html.Raw(Model.HTML)
+</div>
+

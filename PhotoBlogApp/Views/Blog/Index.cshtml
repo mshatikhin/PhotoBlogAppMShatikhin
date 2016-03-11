@@ -1,0 +1,53 @@
+﻿@model IEnumerable<PhotoBlogApp.Core.Blog>
+<div class="block">
+    <p>
+        @Html.ActionLink("Создать", "Create")
+    </p>
+    <table class="table table-hover table-bordered">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HeaderName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TranslitName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DatePublish)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hide)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User.Login)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HeaderName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TranslitName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DatePublish)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hide)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.Login)
+                </td>
+                <td>
+                    @Html.ActionLink("ред.", "Edit", new { id = item.BlogId }) |
+                    @Html.ActionLink("уд.", "Delete", new { id = item.BlogId })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <a href="/">На главную</a>
+</div>

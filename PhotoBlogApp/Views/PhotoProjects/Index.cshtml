@@ -1,0 +1,47 @@
+﻿@model IEnumerable<PhotoBlogApp.Core.PhotoProject>
+<div class="block">
+    <p>
+        @Html.ActionLink("Добавить", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                Название
+            </th>
+            <th>
+                Описание
+            </th>
+            <th>
+                Включен
+            </th>
+            <th>
+                Сортировка
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Enable)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Order)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new {id = item.PhotoProjectId}) |
+                    @Html.ActionLink("Details", "Details", new {id = item.PhotoProjectId}) |
+                    @Html.ActionLink("Delete", "Delete", new {id = item.PhotoProjectId})
+                </td>
+            </tr>
+        }
+    </table>
+    <a href="/">На главную</a>
+</div>

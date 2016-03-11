@@ -1,0 +1,56 @@
+﻿<section id="photos" class="photos">
+    <div class="photos__title">
+        <h1>В ОТРАЖЕНИИ СЕБЯ</h1>
+        Мои фотографии. Люди. Эмоции.
+        <blockquote>
+            &mdash; ФОТОГРАФИЯ МОЖЕТ РАССКАЗАТЬ БОЛЬШЕ,<br />
+            ЧЕМ ТЫСЯЧА СЛОВ, НО НИ ОДНО ИЗ НИХ НЕ <br />
+            БУДЕТ ПРАВДОЙ. <br />
+            Я СОВЕРШЕННО СЧАСТЛИВЫЙ ЧЕЛОВЕК (Keanu Reeves)
+        </blockquote>
+    </div>
+    <div data-photos="true">
+        <!-- ko template: {name: 'photos-tmpl', afterRender: afterRender} -->
+        <!-- /ko -->
+    </div>
+</section>
+
+<script type="text/html" id="photos-tmpl">
+    <div class="photo-gallery">
+        <!-- ko foreach: { data: albums, afterRender: afterRenderAlbums } -->
+        <!-- ko foreach: { data: Photos, afterRender: $parent.afterRenderPhotos } -->
+        <div class="photo-gallery__photo-wrapper">
+            <img class="photo-gallery__photo-image" data-bind="attr:{ src: Url }, click: $root.openPhoto" />
+            <img class="photo-gallery__photo-image_mobile" data-bind="attr:{ src: Url }" />
+            <header class="albums__title" data-bind="text: $parent.Name"></header>
+        </div>
+        <!-- /ko -->
+        <!-- /ko -->
+    </div>
+    <!-- ko if: photoModal() != null -->
+    <!-- ko template: { name: 'photoModal-tmpl', data: photoModal } -->
+    <!-- /ko -->
+    <!-- /ko -->
+</script>
+
+<script type="text/html" id="photoModal-tmpl">
+    <div class="modal" id="photoModal" tabindex="-1" role="dialog" aria-labelledby="photoModalLabel" aria-hidden="true">
+        <div class="modal-dialog photo-modal">
+            <div class="modal-content photo-modal__content">
+                <div class="modal-header photo-modal__header">
+                    <a class="photo-modal__home-link" data-bind="click: close">Mikhail Shatikhin&nbsp;/&nbsp;<span class="photo-modal__title" data-bind="text: title"></span></a>
+                    <button type="button" class="photo-modal__close-btn" data-dismiss="modal">&times;</button>
+                    <div class="photo-modal__description" data-bind="text: description"></div>
+                </div>
+                <div class="modal-body photo-modal__body">
+                    <img class="photo-modal__photo" data-bind="attr:{src: photoUrl}" />
+                    <div class="photo-modal__navigate" data-bind="executeOnLeftRight:{ executeOnLeft: prev, executeOnRight: next}">
+                        <button class="photo-modal__prev-button" data-bind="click: prev,css:{'photo-modal__button-disabled': !hasPrev()}, attr:{'disabled': !hasPrev()}"><span>&nbsp;&lt;</span></button>
+                        <button class="photo-modal__next-button" data-bind="click: next,css:{'photo-modal__button-disabled': !hasNext()}, attr:{'disabled': !hasNext()}"><span>&gt;&nbsp;</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+

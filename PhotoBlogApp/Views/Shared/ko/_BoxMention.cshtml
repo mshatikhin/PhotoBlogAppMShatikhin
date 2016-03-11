@@ -1,0 +1,47 @@
+﻿@{
+    Layout = null;
+}
+<div class="modal fade" id="mention-box" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">
+                    Отзыв.
+                    <button type="button" class="modal-close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </h4>
+            </div>
+            @using (Html.BeginForm("SendMention", "Mention", FormMethod.Post))
+            {
+                <div class="modal-body">
+                    <div class="request-form">
+                        Напишите о ваших впечатлениях, о качестве услуг или результате.
+                        <div class="form-block">
+                            <label>ФИО</label>
+                            <input class="form-control"
+                                   required
+                                   placeholder="Представьтесь"
+                                   id="Name"
+                                   name="Name"
+                                   type="text"
+                                   value=""
+                                   autofocus=""
+                                   title="Введите ваше ФИО"/>
+                        </div>
+                        <div class="form-block">
+                            <label>Ваш отзыв о фотосесии</label>
+                            <textarea required class="form-control" name="Mention" cols="5" rows="4" placeholder="Напишите о ваших впечатлениях, о качестве услуг и результате..."></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer text-center">
+                    <button type="submit" class="btn btn-submit">
+                        Отправить отзыв
+                    </button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

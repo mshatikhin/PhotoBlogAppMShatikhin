@@ -1,0 +1,122 @@
+﻿@using System.Web.Optimization
+@using PhotoBlogApp.Models.ClientModels
+@model PhotoBlogApp.Models.ClientModels.MainViewM
+@{
+    var url = "";
+    if (Request.Url != null)
+    {
+        url = Request.Url.GetLeftPart(UriPartial.Authority);
+    }
+}
+@if (Model != null)
+{
+    <div class="fotorama"
+         data-ratio="16/9"
+         data-width="100%"
+         data-max-width="100%"
+         data-fit="cover"
+         data-loop="true"
+         data-shuffle="true"
+         data-keyboard="true"
+         data-autoplay="true"
+         data-hash="false"
+         data-click="true"
+         data-swipe="true"
+         data-allowfullscreen="native"
+         data-nav="false">
+        @foreach (var image in Model.PhotoM)
+        {
+            <img src="@image.FullUrl" />
+        }
+    </div>
+    <div class="landing">
+        <div class="container">
+            <h1>Желаете примерить на себе интересный образ или просто замечательных фотографий? Записывайтесь на фотосессию!</h1>
+            <a class="btn btn-request" href="#/request">Записаться</a>
+        </div>
+    </div>
+    <div class="concept">
+        <div class="container">
+            <h1>Моя концепция</h1>
+            <ul class="concept__menu">
+                <li class="concept__link">
+                    <h3>
+                        <img class="concept__image" src="@Url.Content("~/Content/icons/arrow.png")" width="32" height="32" />
+                        <span class="concept__description">Фотография должна быть такой, чтобы не стыдно было её напечатать</span>
+                    </h3>
+                </li>
+                <li class="concept__link">
+                    <h3>
+                        <img class="concept__image" src="@Url.Content("~/Content/icons/arrow.png")" width="32" height="32" />
+                        <span class="concept__description">Минимализм цвета и формы</span>
+                    </h3>
+                </li>
+                <li class="concept__link">
+                    <h3>
+                        <img class="concept__image" src="@Url.Content("~/Content/icons/arrow.png")" width="32" height="32" />
+                        <span class="concept__description">Фотография души</span>
+                    </h3>
+                </li>
+                <li class="concept__link">
+                    <h3>
+                        <img class="concept__image" src="@Url.Content("~/Content/icons/arrow.png")" width="32" height="32" />
+                        <span class="concept__description">Фотография как искусство</span>
+                    </h3>
+                </li>
+                <li class="concept__link">
+                    <h3>
+                        <img class="concept__image" src="@Url.Content("~/Content/icons/arrow.png")" width="32" height="32" />
+                        <span class="concept__description">Свет. Цвет. Форма.</span>
+                    </h3>
+                </li>
+                <li class="concept__link">
+                    <h3>
+                        <img class="concept__image" src="@Url.Content("~/Content/icons/arrow.png")" width="32" height="32" />
+                        <span class="concept__description">Фотография как способ узнать новое, почувствовать новое, создать невообразимое</span>
+                    </h3>
+                </li>
+                <li class="concept__link">
+                    <h3>
+                        <img class="concept__image" src="@Url.Content("~/Content/icons/arrow.png")" width="32" height="32" />
+                        <span class="concept__description">Фотография как способ привнести в реальность нереальное</span>
+                    </h3>
+                </li>
+                <li class="concept__link">
+                    <h3>
+                        <img class="concept__image" src="~/Content/icons/arrow.png" width="32" height="32" />
+                        <span class="concept__description">Эстетика прекрасного</span>
+                    </h3>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    if (Model.PicturesOfDay != null && Model.PicturesOfDay.Photos.Any())
+    {
+        <div class="picture-of-the-day">
+            <div class="container">
+                <h1>Картинка дня</h1>
+                <div class="relative">
+                    @{
+                        var photo = Model.PicturesOfDay.Photos.FirstOrDefault();
+                    }
+                    <div class="picture-of-the-day__image-box">
+                        <a href="@Url.Action("Images", "Home", new {title = @Model.PicturesOfDay.TitleUrl})" title="Перейти в альбом">
+                            <img class="picture-of-the-day__image" src="@string.Format("{0}{1}", url, @photo.FullUrl)" />
+                        </a>
+                    </div>
+                    <div class="picture-of-the-day__open-album">
+                        <a href="@Url.Action("Images", "Home", new {title = @Model.PicturesOfDay.TitleUrl})" title="Перейти в альбом">
+                            <img src="@Url.Content("~/Content/icons/rightArror.png")" width="64" height="64" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+                            }
+
+                        }
+@section scripts
+{
+    @Scripts.Render("~/bundles/main")
+}

@@ -1,0 +1,23 @@
+﻿@model PhotoBlogApp.Models.ClientModels.PagingM
+@if (Model != null)
+{
+    <div class="paging">
+        @if (Model.HasPrevPage)
+        {
+            <a href="@Url.Action("Post", "Home", new {title = Model.PrevPage})" class="paging__link">Предыдующая запись</a>
+        }
+        else
+        {
+            <span class="paging__link paging__link-disabled">Предыдующая запись</span>
+        }
+        @if (Model.HasNextPage)
+        {
+            <a href="@Url.Action("Post", "Home", new {title = Model.NextPage})" class="paging__link">Следующая запись</a>
+        }
+        else
+        {
+            <span class="paging__link paging__link-disabled">Следующая запись</span>
+        }
+    </div>
+}
+

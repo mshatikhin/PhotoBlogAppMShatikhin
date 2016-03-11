@@ -1,0 +1,40 @@
+﻿@model PhotoBlogApp.Core.Blog
+<div class="block">
+    <h3>Удалить?</h3>
+    <div>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.HeaderName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.HeaderName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ContentText)
+            </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.DatePublish)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DatePublish)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Hide)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Hide)
+            </dd>
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Назад", "Index")
+            </div>
+        }
+    </div>
+</div>
+

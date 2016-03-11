@@ -1,0 +1,29 @@
+﻿@using System.Globalization
+@using System.Web.Optimization
+@model PhotoBlogApp.Models.ClientModels.PostM[]
+<div class="container">
+    @if (Model != null)
+    {
+        <div class="blog">
+            <h1>Непутёвые заметки</h1>
+            @foreach (var post in Model)
+            {
+                <div class="blog__article">
+                    <header>
+                        <time datetime="@post.Date" class="blog__published">
+                            @post.Date.ToString("F", new CultureInfo("ru-RU"))
+                        </time>
+                        <a class="blog__link" href="@Url.Action("Post", "Home", new {title = @post.TitleUrl})">
+                            @post.Title
+                        </a>
+                    </header>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/main")
+}

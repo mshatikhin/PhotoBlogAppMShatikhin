@@ -1,0 +1,47 @@
+﻿@using System.Web.Optimization
+@model PhotoBlogApp.Models.ClientModels.AlbumsM
+<div class="portfolio">
+    <div class="container w1400">
+        <h1>Моё скромное портфолио</h1>
+        <h5 class="sub-header">Если вы желаете посотрудничать со мной как модель, фотограф, или ещё как-то. Воспользуйтесь страницей <a href="@Url.Action("Contact","Home")">контакты</a>.</h5>
+        <div id="gallery" class="gallery is-hidden">
+            @foreach (var album in Model.AlbumMs)
+            {
+                <a href="@Url.Action("Images", "Home", new {title = @album.TitleUrl})">
+                    <div class="gallery-album">
+                        <img class="gallery-item-image" src="@string.Format("{0}", @album.Logo)"/>
+                        @if (!string.IsNullOrEmpty(@album.Description))
+                        {
+                            <div class="gallery-album__info">
+                                @album.Description
+                            </div>
+                        }
+                        <div class="gallery-album__name">
+                            @album.Name
+                        </div>
+                    </div>
+                </a>
+            }
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    @Scripts.Render("~/bundles/portfolio")
+
+    <script>
+        function callImage() {
+            //alert ('called');
+            var $container = $('#gallery');
+            $container.packery({
+                itemSelector: '.gallery-album',
+                gutter: 10
+            });
+            $(".is-hidden").removeClass("is-hidden");
+        };
+
+        docReady(function () {
+            $('#gallery').imagesLoaded(callImage);
+        });
+    </script>
+}

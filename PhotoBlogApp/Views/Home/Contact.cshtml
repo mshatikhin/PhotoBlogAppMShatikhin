@@ -1,0 +1,62 @@
+﻿@using System.Web.Optimization
+<div class="container">
+    <div class="contact">
+        <h1>Связь со мной</h1>
+        <div class="about__me">
+            <div class="about__me-contact-image">
+            </div>
+            <img src="@Url.Content("~/Content/img/me.jpg")" width="0" height="0" />
+        </div>
+        @using (Html.BeginForm("SendRequest", "Request", FormMethod.Post))
+        {
+            <div class="request-form">
+                <div>
+                    <p>Всегда рад общению с интересными людьми.</p>
+                    <p>По любым вопросам пишите мне <a href="mailto:mshatikhin@gmail.com?subject=С сайта">email (mshatikhin@gmail.com)</a>, или воспользуйтесь формой обратной связи:</p>
+                </div>
+                <div class="form-block">
+                    <label for="Name">Представьтесь</label>
+                    <input class="form-control"
+                           placeholder="Ваше ФИО"
+                           id="Name"
+                           name="Name"
+                           type="text"
+                           value=""
+                           required
+                           autofocus=""
+                           title="Введите ваше ФИО" />
+                </div>
+                <div class="form-block">
+                    <label for="Coordinates">Ваши контактные данные (телефон/ссылка на соц. сети)</label>
+                    <textarea class="form-control"
+                              placeholder="Ваши контактные данные"
+                              id="Coordinates"
+                              name="Coordinates"
+                              cols="5" rows="1"
+                              required
+                              title="Введите ваши контактные данные"></textarea>
+                </div>
+                <div class="form-block">
+                    <label for="Comments">Сообщение</label>
+                    <textarea class="form-control"
+                              placeholder="Ваше сообщение"
+                              id="Comments"
+                              name="Comments"
+                              cols="5" rows="1"
+                              required
+                              title="Введите ваши контактные данные"></textarea>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-submit" id="submit-button">
+                        Отправить
+                    </button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/main")
+}

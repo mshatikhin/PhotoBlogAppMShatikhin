@@ -1,0 +1,59 @@
+﻿@{
+    Layout = null;
+}
+<div class="container">
+    <nav class="nav">
+        <ul class="navigation">
+            <li><a class="navigation__link" href="@Url.Action("Index", "Home")">Главная</a></li>
+            <li><a class="navigation__link" href="@Url.Action("Portfolio", "Home")">Портфолио</a></li>
+            <li><a class="navigation__link" href="@Url.Action("About", "Home")">Обо мне</a></li>
+            <li><a class="navigation__link" href="@Url.Action("Contact", "Home")">Контакты</a></li>
+            <li><a class="navigation__link" href="@Url.Action("Blog", "Home")">Блог</a></li>
+            @if (User.Identity.IsAuthenticated && User.Identity.Name == "admin")
+            {
+                <li class="navigation__link navigation__link-active dropdown">
+                    <div class="">
+                        <a class="link">
+                            <img src="@Url.Content("~/Content/icons/settings.png")" width="20" height="20" />
+                        </a>
+                        <ul class="admin-menu">
+                            <li>
+                                <a href="@Url.Action("Edit","Album", new {id = 1008 })">Картинка дня</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Create","Blog")">Новый пост</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="/photoalbums">Альбомы</a>
+                            </li>
+                            <li>
+                                <a href="/requests">Заявки</a>
+                            </li>
+                            <li>
+                                <a href="/users">Пользователи</a>
+                            </li>
+                            <li>
+                                <a href="/photographs">Фотографии</a>
+                            </li>
+                            <li>
+                                <a href="/admin/Blog">Посты</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index","PhotoProjects")">Фотопроекты</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index","Mention")">Отзывы</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="/logoff">Выйти</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            }
+        </ul>
+        <a class="btn btn-request btn-request-nav" href="#/request">Хочу портрет!</a>
+    </nav>
+</div>

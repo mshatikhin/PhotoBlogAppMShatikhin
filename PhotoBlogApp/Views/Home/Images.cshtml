@@ -1,0 +1,45 @@
+﻿@using System.Web.Optimization
+@model PhotoBlogApp.Models.ClientModels.AlbumM
+@{
+    var url = "";
+    if (Request.Url != null)
+    {
+        url = Request.Url.GetLeftPart(UriPartial.Authority);
+    }
+}
+<div class="portfolio">
+    <div class="container w100p">
+        <h1>@Model.Name</h1>
+        <h5 class="sub-header">@Model.Description</h5>
+        <div id="gallery" class="gallery is-hidden">
+            @foreach (var photo in Model.Photos)
+            {
+                <div class="gallery-item">
+                    <a href="@Url.Action("Image", "Home", new {title = Model.TitleUrl, photoId = @photo.PhotoId})">
+                        <img class="gallery-item-image" src="@string.Format("{0}{1}", url, @photo.SmallUrl)" />
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    @Scripts.Render("~/bundles/portfolio")
+
+    <script>
+        function callImage() {
+            //alert ('called');
+            var $container = $('#gallery');
+            $container.packery({
+                itemSelector: '.gallery-item',
+                gutter: 5
+            });
+            $(".is-hidden").removeClass("is-hidden");
+        };
+
+        docReady(function () {
+            $('#gallery').imagesLoaded(callImage);
+        });
+    </script>
+}

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<PhotoBlogApp.Core.Photo>
+<div class="block">
+    <a href="/">На главную</a>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PhotoName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Path)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Album.AlbumName)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhotoName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Path)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Album.AlbumName)
+                </td>
+                <td>
+                    @Html.ActionLink("ред.", "Edit", new { id = item.PhotoId }) |
+                    @using (Html.BeginForm("Delete", "Photo", new { id = item.PhotoId }, FormMethod.Post))
+                    {
+                        <input type="submit" value="Удалить" class="btn btn-danger btn-sm" />
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+    <a href="/">На главную</a>
+</div>

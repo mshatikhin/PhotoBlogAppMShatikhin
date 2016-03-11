@@ -1,0 +1,30 @@
+﻿@model IEnumerable<PhotoBlogApp.Core.Mention>
+<div class="block">
+    <table class="table">
+        <tr>
+            <th>
+               ФИО
+            </th>
+            <th>
+                Отзыв
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mention1)
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MentionId })
+                </td>
+            </tr>
+        }
+    </table>
+
+</div>

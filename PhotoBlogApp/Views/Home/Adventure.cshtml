@@ -1,0 +1,50 @@
+﻿<section id="blog" class="blog">
+    <div class="blog__title">
+        <h1>СКВОЗЬ ПРОСТРАНСТВО И ВРЕМЯ</h1>
+        Мои путешествия. Прогулки. Поездки. Заметки.
+        <blockquote>
+            &mdash; "лучше гор могут быть только горы".
+        </blockquote>
+    </div>
+    <div class="blog__timeline-adventure">
+        <div id="timeline-adventure"></div>
+    </div>
+    <div data-blog="true">
+        <!-- ko template: {name: 'posts-tmpl'} -->
+        <!-- /ko -->
+    </div>
+</section>
+
+<script type="text/html" id="posts-tmpl">
+    @*<div class="posts">
+        <ul class="list-unstyled">
+            <!-- ko foreach: posts -->
+            <li>
+                <a class="posts__link" data-bind="text: Title, attr:{href: '#/blog/post/'+PostId}"></a>
+            </li>
+            <!-- /ko -->
+        </ul>
+    </div>*@
+    <!-- ko template: {name: 'modal-tmpl', data: postModal} -->
+    <!-- /ko -->
+</script>
+
+<script type="text/html" id="modal-tmpl">
+    <div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true">
+        <div class="modal-dialog post-modal">
+            <div class="modal-content post-modal__content">
+                <div class="modal-header">
+                    <h1>
+                        <span data-bind="text: title"></span>
+                        <button type="button" class="close post-modal__close-btn" data-bind="click: close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </h1>
+                </div>
+                <div class="modal-body post-modal__body">
+                    <div data-bind="html: html"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>

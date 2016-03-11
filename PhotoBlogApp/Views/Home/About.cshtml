@@ -1,0 +1,66 @@
+﻿@using System.Web.Optimization
+<div class="container">
+    <section id="about" class="about">
+        <h1>Обо мне</h1>
+        <div class="about__me">
+            <div class="about__me-image">
+            </div>
+            <img src="@Url.Content("~/Content/img/me.jpg")" width="0" height="0" />
+        </div>
+        <article class="about__content">
+            <p>
+                Привет, меня зовут Михаил, по профессии я программист, в основном занимаюсь frontend разработкой в компании СКБ Контур. Пишу различные веб-приложения и сайты.
+                В свободное время от работы я увлеченно занимаюсь фотографией, которая заняла в моей жизни основополагающее место.
+                Я считаю, что фотография позволяет многим раскрыться изнутри, показать человеку таким, каким он себя ощущает.
+                Фотография – это прекрасное средство самовыражения, позитивное и познавательное занятие.
+            </p>
+            <p>
+                Меня очень вдохновляет создание портретов, воплощение художественных/творческих образов и различных фантазий в фотографиях.
+                Особенно мне нравятся пленэрные съёмки: скалы, реки и леса, а также мистическое и интригующее.
+                Буду рад увидеть вас через объектив моей фотокамеры! ;)<br /> <a href="#/request">Записывайтесь</a> ко мне на съёмку, если у вас нет идеи, то не проблема - я вам помогу.
+            </p>
+            <p>
+                Также я люблю путешествовать, живу я на Урале, в городе Екатеринбург.
+                Поэтому львиная доля путешествий приходится на ближайшие достопримечательности: Свердловская область, Челябинская область, Башкирия, Пермский край.
+                Я обожаю ощущение жизни, когда сердце бьётся по-настоящему, тебя обдувает ветер и ты смотришь вдаль на бескрайние просторы природы.
+            </p>
+
+            <blockquote class="text-left">
+                Если желаете со мной поработать, сообщите мне:
+                <div>
+                    вконтакте: <a href="//vk.com/id2069565">Михаил Шатихин</a>
+                    <br />
+                    почта: <a href="mailto:mshatikhin@gmail.com">mshatikhin@gmail.com</a>
+                    <br />
+                    тел.: 8(912)043-98-27
+                    <br />
+                    <br />
+                    <div style="width: 230px; display: inline-block;">
+                        <div id="vk_subscribe"></div>
+                        <div id="vk_subscribe_group"></div>
+                    </div>
+                </div>
+                <div class="about__me">
+                    <div class="about__me-social pluso">
+                        <label class="pluso-wrap">
+                            <a class="pluso-vkontakte" href="//vk.com/m.shatikhin" target="blank"></a>
+                            <a class="pluso-facebook" href="//www.facebook.com/mshatikhin" target="blank"></a>
+                            <a class="pluso-instagram" href="//instagram.com/mshatikhin" target="blank"></a>
+                            <a class="pluso-twitter" href="//twitter.com/mshatikhin" target="blank"></a>
+                            <a class="pluso-google" href="//plus.google.com/u/0/115199438367581728578" target="blank"></a>
+                        </label>
+                    </div>
+                </div>
+            </blockquote>
+        </article>
+    </section>
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/main")
+    <script type="text/javascript">
+        VK.Widgets.Subscribe("vk_subscribe", { mode: 1, soft: 1 }, 2069565);
+        VK.Widgets.Subscribe("vk_subscribe_group", { mode: 1, soft: 1 }, -58862146);
+    </script>
+}

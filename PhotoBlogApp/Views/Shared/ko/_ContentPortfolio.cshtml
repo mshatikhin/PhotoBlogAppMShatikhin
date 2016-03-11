@@ -1,0 +1,26 @@
+﻿<script type="text/html" id="content-portfolio-item">
+    <div class="img-b">
+        <img class="img_js" data-bind="attr:{ src: photo.Url, 'data-fullimage': photo.Url, id: photoId}" data-toggle="modal" data-target="#image-box" />
+    </div>
+</script>
+
+<script type="text/html" id="content-portfolio-tmpl">
+    <div class="clearfix text-center" id="photos-loader">
+        <div id="loader-image"></div>
+    </div>
+    <div class="images-b">
+        <div>
+            <span class="action-icons">
+                <span class="glyphicon glyphicon-align-justify action-icons__item" title="Показать фотографии в виде списка" data-bind="click: listView, css:{isActive: isListView()}"></span>
+                <span class="glyphicon glyphicon-th action-icons__item" title="Показать фотографии в виде сетки" data-bind="click: gridView, css:{isActive: !isListView()}"></span>
+            </span>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row-images" data-bind="css: { listView: isListView() }">
+            <!-- ko template: {name: 'content-portfolio-item', foreach: photos }-->
+            <!-- /ko -->
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div data-bind="scroll: scrolled(), scrollOptions: { loadFunc: loadPhotos, offset: 50 }"></div>
+</script>

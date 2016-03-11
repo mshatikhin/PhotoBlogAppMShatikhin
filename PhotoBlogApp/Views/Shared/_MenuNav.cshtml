@@ -1,0 +1,74 @@
+﻿@{
+    Layout = null;
+}
+<nav>
+    <ul class="menu-nav">
+        <li class="menu-nav__item">
+            <a class="menu-nav__link" href="#/promo">главная</a>
+        </li>
+        <li class="menu-nav__item">
+            <a class="menu-nav__link" href="#/about">обо мне</a>
+        </li>
+        <li class="menu-nav__item">
+            <a class="menu-nav__link" href="#/blog">блог</a>
+        </li>
+        <li class="menu-nav__item">
+            <a class="menu-nav__link" href="#/photos">портфолио</a>
+        </li>
+        @if (User.Identity.IsAuthenticated && User.Identity.Name == "smithtanya")
+        {
+            <li>
+                <a class="menu-nav__link" href="/requests">заявки</a>
+            </li>
+        }
+        <li class="menu-nav__delimiter"></li>
+        <li class="menu-nav__item">
+            <a class="menu-nav__link" href="#/request">хочу портрет!</a>
+        </li>
+        @if (User.Identity.IsAuthenticated && User.Identity.Name == "admin")
+        {
+            <li class="menu-nav__item">
+                <div class="dropdown">
+                    <a class="link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+                        admin
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="admin-menu">
+                        <li>
+                            <a href="@Url.Action("Index", "MSCED")">MSCED</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Create","Blog")">Новый пост</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="/photoalbums">Альбомы</a>
+                        </li>
+                        <li>
+                            <a href="/requests">Заявки</a>
+                        </li>
+                        <li>
+                            <a href="/users">Пользователи</a>
+                        </li>
+                        <li>
+                            <a href="/photographs">Фотографии</a>
+                        </li>
+                        <li>
+                            <a href="/admin/Blog">Посты</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index","PhotoProjects")">Фотопроекты</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index","Mention")">Отзывы</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="/logoff">Выйти</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        }
+    </ul>
+</nav>

@@ -1,0 +1,30 @@
+@model NetworkCredential
+@{
+    ViewBag.Title = "Вход в систему";
+}
+<div class="container">
+    <div class="account-wall">
+        <h3>Вход</h3>
+        <img class="profile-img" src="@Url.Content("~/Content/img/photo.png")" alt="">
+
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-signin" }))
+        {
+            @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", placeholder = "Email" })
+            @Html.PasswordFor(model => model.Password, new { @class = "form-control", placeholder = "Password" })
+            <p>
+                <button class="btn btn-primary btn-block" type="submit">
+                    Войти
+                </button>
+            </p>
+
+            if (Request.HttpMethod == "POST")
+            {
+                <div class="alert alert-danger">
+                    Неверный логин или пароль
+                </div>
+            }
+        }
+        <a href="@Url.Action("Register", "Account")">Зарегистрироваться</a>
+    </div>
+</div>
+

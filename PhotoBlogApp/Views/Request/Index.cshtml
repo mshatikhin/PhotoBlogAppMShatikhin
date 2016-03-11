@@ -1,0 +1,44 @@
+﻿@model IEnumerable<PhotoBlogApp.Core.Request>
+<div class="block">
+    <table class="table">
+        <tr>
+            <th>
+                Дата
+            </th>
+            <th>
+               Имя
+            </th>
+            <th>
+                Комментарий
+            </th>
+            <th>
+                Информация
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactInfo)
+                </td>
+                <td>
+                    @Html.ActionLink("ред.", "Edit", new { id = item.RequestId }) |
+                    @Html.ActionLink("удалить", "Delete", new { id = item.RequestId })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <a href="/">На главную</a>
+</div>

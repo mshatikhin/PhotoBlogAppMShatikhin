@@ -1,0 +1,37 @@
+﻿@using System.Web.Optimization
+@using PhotoBlogApp.Models.ClientModels
+@model PhotoBlogApp.Models.ClientModels.PostM
+<div class="container">
+    @if (Model != null)
+    {
+        <div class="post">
+            @Html.Partial("_Post", Model)
+            <div class="social-b">
+                @Html.Partial("Social", new SocialM { })
+            </div>
+            <hr />
+            @Html.Partial("_Paging", Model.PagingM)
+            @Html.ActionLink("Вернуться в блог", "Blog", "Home")
+            <hr/>
+            <h2>Комментарии</h2>
+            <div id="hypercomments_widget"></div>
+        </div>
+    }
+</div>
+@section scripts
+{
+    @Scripts.Render("~/bundles/main")
+    <script type="text/javascript">
+        _hcwp = window._hcwp || [];
+        _hcwp.push({ widget: "Stream", widget_id: 60192 });
+        (function () {
+            if ("HC_LOAD_INIT" in window) return;
+            HC_LOAD_INIT = true;
+            var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+            var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+            hcc.src = ("https:" == document.location.protocol ? "https" : "http") + "://w.hypercomments.com/widget/hc/60192/" + lang + "/widget.js";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hcc, s.nextSibling);
+        })();
+    </script>
+}

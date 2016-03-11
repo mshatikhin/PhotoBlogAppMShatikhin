@@ -1,0 +1,65 @@
+﻿@{
+    Layout = null;
+}
+@model PhotoBlogApp.Models.ClientModels.RequestM
+<div class="modal fade" id="request-box" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">
+                    Заявка на участие в фотосессии
+                    <button type="button" class="modal-close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </h4>
+            </div>
+            @using (Html.BeginForm("SendRequest", "Request", FormMethod.Post))
+            {
+                <div class="modal-body">
+                    <div class="request-form">
+                        <div>
+                            Чтобы принять участие в фотосессии нужно заполнить заявку и отправить её. <br />
+                            В анкете обязательно укажите контактные данные, чтобы я смог с вами связаться.
+                        </div>
+                        <div class="form-block">
+                            <label for="Name">Представьтесь</label>
+                            <input class="form-control"
+                                   placeholder="Введите ваше ФИО"
+                                   name="Name"
+                                   id="Name"
+                                   type="text"
+                                   value=""
+                                   required=""
+                                   title="Введите ваше ФИО" />
+                        </div>
+                        <div class="form-block">
+                            <label for="Coordinates">Ваши контактные данные (телефон/ссылка на соц. сеть)</label>
+                            <textarea class="form-control"
+                                      placeholder="Введите контактные данные"
+                                      name="Coordinates"
+                                      id="Coordinates"
+                                      required=""
+                                      cols="5" rows="2"
+                                      title="Введите ваши контактные данные"></textarea>
+                        </div>
+                        <div class="form-block">
+                            <label for="Comments">Комментарии (напишите немного о себе, своих интересах, либо образ который вы бы хотели реализовать)</label>
+                            <textarea class="form-control" name="Comments" id="Comments" cols="5" rows="2" placeholder="Введите комментарий"></textarea>
+                        </div>
+                        <div class="form-block">
+                            <label>
+                                @Html.EditorFor(x => x.Tfp)
+                                &nbsp;<span>Хочу <a target="blank" href="https://ru.wikipedia.org/wiki/Time_for_print">TFP</a> съёмку</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer text-center">
+                    <button type="submit" class="btn btn-submit" id="submit-button">
+                        Отправить заявку
+                    </button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
