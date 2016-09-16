@@ -7,7 +7,7 @@
             <li><a class="navigation__link" href="@Url.Action("Index", "Home")">Главная</a></li>
             <li><a class="navigation__link" href="@Url.Action("Portfolio", "Home")">Портфолио</a></li>
             <li><a class="navigation__link" href="@Url.Action("About", "Home")">Обо мне</a></li>
-            <li><a class="navigation__link" href="@Url.Action("Contact", "Home")">Контакты</a></li>
+            @*<li><a class="navigation__link" href="@Url.Action("Contact", "Home")">Контакты</a></li>*@
             <li><a class="navigation__link" href="@Url.Action("Blog", "Home")">Блог</a></li>
             @if (User.Identity.IsAuthenticated && User.Identity.Name == "admin")
             {
@@ -54,6 +54,6 @@
                 </li>
             }
         </ul>
-        <a class="btn btn-request btn-request-nav" href="#/request">Хочу портрет!</a>
+       @* <a class="btn btn-request btn-request-nav" href="#/request">Хочу портрет!</a>*@
     </nav>
 </div>

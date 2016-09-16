@@ -145,6 +145,8 @@ namespace PhotoBlogApp.Controllers
         [HttpGet]
         public ActionResult Contact()
         {
+            return RedirectToAction("About");
+
             const string seotitle = "Контакты - Михаил Шатихин";
             const string description = "Готов к общению с вами. Связаться со мной очень просто.";
             const string type = "article";

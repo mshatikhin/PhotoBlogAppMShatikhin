@@ -29,7 +29,7 @@
             <img src="@image.FullUrl" />
         }
     </div>
-    <div class="landing">
+    @*<div class="landing">
         <div class="container">
             <h1>Желаете примерить на себе интересный образ или просто замечательных фотографий? Записывайтесь на фотосессию!</h1>
             <a class="btn btn-request" href="#/request">Записаться</a>
@@ -89,9 +89,9 @@
                 </li>
             </ul>
         </div>
-    </div>
+    </div>*@
 
-    if (Model.PicturesOfDay != null && Model.PicturesOfDay.Photos.Any())
+    @*if (Model.PicturesOfDay != null && Model.PicturesOfDay.Photos.Any())
     {
         <div class="picture-of-the-day">
             <div class="container">
@@ -113,9 +113,8 @@
                 </div>
             </div>
         </div>
-                            }
-
-                        }
+    }*@
+}
 @section scripts
 {
     @Scripts.Render("~/bundles/main")

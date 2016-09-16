@@ -17,7 +17,7 @@ namespace PhotoBlogApp.Controllers
         private readonly IPhotoProjectService photoProjectService;
         private readonly string SiteName = ConfigurationManager.AppSettings["SiteName"];
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpPost]
         public ActionResult SendRequest(RequestM requestM)
         {
